@@ -6,6 +6,7 @@ import { getAds } from '../api/index';
 import ListAds from '../components/ListAds';
 import SearchForm from '../components/SearchForm';
 import styles from './index.module.scss';
+import { toast } from "react-toastify"
 const Index = () => {
   const [config, setConfig] = useState({
     minPrice: "",
@@ -14,14 +15,14 @@ const Index = () => {
     city: "",
     district: ""
   })
-  const { data: ads, refetch, isLoading, isFetching, } = useQuery({
+  const [count, setCount] = useState(1)
+  const { data: ads, refetch, isLoading, isFetching, fetchStatus } = useQuery({
     queryKey: ["ads"],
     queryFn: () => getAds(config),
     onError: (error) => {
-      console.log(error);
+      if (error) return toast.error('something went error')
     }
   })
-  console.log(ads);
   const [isOpen, setIsOpen] = useState(false);
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
@@ -33,11 +34,19 @@ const Index = () => {
     city: "",
     district: ""
   })
+  const handleClick = () => {
+    if (count === 5) {
+      setCount(0)
+      return toast.error('server error 500')
+    }
+    setCount(prev => prev += 1)
+    refetch()
+  }
   return (
     <div className={styles.container}>
       <Box justifyContent="center" display="flex" gap={"20px"} alignItems="center" paddingY="20px" flexWrap="wrap">
         <h1 className={styles.title}>List of ads</h1>
-        <Button disabled={isFetching} onClick={refetch} variant='outlined'>
+        <Button disabled={isFetching} onClick={handleClick} variant='outlined'>
           Send an API request
         </Button>
         <Button variant="outlined" onClick={handleOpen}>
