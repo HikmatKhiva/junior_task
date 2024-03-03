@@ -1,0 +1,129 @@
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 26px;
+}
+
+.loading {
+    text-align: center;
+}
+
+.card_list {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+
+    .card {
+        width: 250px;
+
+        img {
+            object-fit: cover;
+        }
+
+        h4 {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+    }
+}
+
+.details {
+    padding: 20px 0px;
+
+    h2 {
+        text-align: center;
+    }
+
+    .detail_card {
+        width: 50%;
+        margin: 0 auto;
+
+        .detail_card_footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+    }
+}
+
+.filter_form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    button {
+        width: 230px;
+    }
+}
+
+.modal {
+    .close {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+}
+
+.carousel {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    img {
+        margin: 0 auto;
+        align-self: center;
+    }
+}
+
+//Extra Extra Large Device
+@media (max-width:1400px) {
+    .container {
+        width: 1300px;
+    }
+}
+
+// Extra Large Device
+@media (max-width:1200px) {
+    .container {
+        width: 1040px;
+    }
+}
+
+// Large Device
+@media (max-width:1040px) {
+    .container {
+        width: 992px;
+    }
+}
+
+// Medium Device
+@media (max-width:992px) {
+    .container {
+        width: 768px;
+    }
+}
+
+// Medium Tablet Device
+@media (max-width:768px) {
+    .container {
+        width: 520px;
+    }
+}
+
+//Small Device
+@media (max-width:576px) {
+    .container {
+        width: 90%;
+    }
+}
